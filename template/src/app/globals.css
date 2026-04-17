@@ -1,0 +1,250 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --ring: 240 4.9% 83.9%;
+  }
+
+  * { border-color: hsl(var(--border)); }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+article p:has(img[src^="data:image/svg"]) {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+article img[src^="data:image/svg"] {
+  background: transparent !important;
+}
+
+article img {
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+article thead tr {
+  background: hsl(var(--muted)) !important;
+}
+
+
+
+article th {
+  padding: 8px 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+article p:has(> span > span[style]) {
+  margin-bottom: 32px !important;
+}
+
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+
+@media print {
+  .no-print, aside, nav, header { display: none !important; }
+
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main > div {
+    padding: 0 !important;
+  }
+
+  main > div > div:first-child {
+    display: none !important;
+  }
+
+  main > div > div:nth-child(2) p {
+    font-size: 7pt !important;
+    color: #888 !important;
+    letter-spacing: 0.08em;
+    margin-bottom: 2mm !important;
+  }
+
+  main > div > div:nth-child(2) h1 {
+    font-size: 22pt !important;
+    font-weight: 600 !important;
+    color: black !important;
+    margin: 0 0 6mm 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  main > div > div:nth-child(2) {
+    border-bottom: 0.5pt solid #ddd !important;
+    padding-bottom: 5mm !important;
+    margin-bottom: 6mm !important;
+  }
+
+  article { color: #222 !important; }
+
+  article h2 {
+    font-size: 14pt !important;
+    font-weight: 600 !important;
+    color: black !important;
+    margin-top: 10mm !important;
+    margin-bottom: 3mm !important;
+    padding-bottom: 2mm !important;
+    border-bottom: 0.5pt solid #ddd !important;
+    page-break-after: avoid !important;
+  }
+
+  article h3 {
+    font-size: 11pt !important;
+    font-weight: 600 !important;
+    color: black !important;
+    margin-top: 6mm !important;
+    margin-bottom: 2mm !important;
+    page-break-after: avoid !important;
+  }
+
+  article p {
+    font-size: 9.5pt !important;
+    line-height: 1.6 !important;
+    color: #333 !important;
+    margin-bottom: 3mm !important;
+  }
+
+  article ul, article ol {
+    margin: 0 0 4mm 0 !important;
+    padding-left: 5mm !important;
+  }
+
+  article li {
+    font-size: 9.5pt !important;
+    line-height: 1.6 !important;
+    color: #333 !important;
+    margin-bottom: 1mm !important;
+  }
+
+  article strong {
+    color: black !important;
+    font-weight: 600 !important;
+  }
+
+  article code {
+    font-size: 8pt !important;
+    background: #f4f4f4 !important;
+    padding: 0.5mm 1.5mm !important;
+    border-radius: 1mm !important;
+    color: #222 !important;
+  }
+
+  article table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 9pt !important;
+    margin-bottom: 5mm !important;
+    page-break-inside: avoid !important;
+  }
+
+  article thead tr { background: #f5f5f5 !important; }
+
+  article th {
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 2mm 3mm !important;
+    border-bottom: 0.5pt solid #ccc !important;
+    color: #444 !important;
+    text-align: left !important;
+  }
+
+  article td {
+    padding: 2mm 3mm !important;
+    border-bottom: 0.3pt solid #e5e5e5 !important;
+    color: #333 !important;
+    vertical-align: top !important;
+  }
+
+  .not-prose {
+    page-break-inside: avoid !important;
+  }
+
+  article ~ div { display: none !important; }
+
+  article div[style*="flex-direction: column"] {
+    page-break-before: always;
+  }
+
+  a::after { content: none !important; }
+
+  h2 { page-break-before: auto; }
+  table { page-break-inside: avoid; }
+}
+
+@layer utilities {
+  .prose li {
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+}
+
+article ol > li > p,
+article ul > li > p {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
